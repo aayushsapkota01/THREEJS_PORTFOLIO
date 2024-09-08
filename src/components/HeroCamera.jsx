@@ -25,9 +25,10 @@ const HeroCamera = ({ children, isMobile }) => {
   );
 };
 
+
+export default HeroCamera;
+
 HeroCamera.propTypes = {
   children: PropTypes.node.isRequired,
   isMobile: PropTypes.bool.isRequired,
 };
-
-export default HeroCamera;
