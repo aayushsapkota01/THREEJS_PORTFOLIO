@@ -1,4 +1,4 @@
-# Logs
+ # Logs
 logs
 *.log
 npm-debug.log*
@@ -7,9 +7,14 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependency directories
 node_modules
+
+# Build directories
 dist
 dist-ssr
+
+# Local environment settings
 *.local
 
 # Editor directories and files
@@ -22,3 +27,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment variables (important for security)
+*.env
