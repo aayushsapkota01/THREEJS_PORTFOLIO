@@ -14,7 +14,7 @@ const About = () => {
     }, 3000);
   };
   return (
-    <section className="c-space my-20">
+    <section className="c-space my-20" id="about">
       <div className="grid xl:grid-cols-3 xl:grid-rows-6 md:grid-cols-1 grid-cols-1 gap-5 h-full">
         <div className="col-span-1 xl:row-span-3">
           <div className="grid-container">
@@ -57,7 +57,7 @@ const About = () => {
                 backgroundImageOpacity={0.5}
                 showAtmosphere
                 showGraticules
-                globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+                globeImageUrl="//unpkg.com/three-globe/example/img/earth-day.jpg"
                 bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
               />
             </div>
@@ -103,8 +103,6 @@ const About = () => {
                 className="copy-container"
                 onClick={handleCopy}
                 onTouchStart={handleCopy}
-                role="button" // Adding role for better accessibility
-                tabIndex={0} // Making it focusable
                 aria-label="Copy Email"
               >
                 <img
