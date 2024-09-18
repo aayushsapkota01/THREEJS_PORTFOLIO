@@ -13,15 +13,23 @@ const projectCount = myProjects.length;
 const Projects = () => {
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
 
+  // const handleNavigation = (direction) => {
+  //   setSelectedProjectIndex((prevIndex) => {
+  //     if (direction === "previous") {
+  //       return prevIndex === 0 ? projectCount - 1 : prevIndex - 1;
+  //     } else {
+  //       return prevIndex === projectCount - 1 ? 0 : prevIndex + 1;
+  //     }
+  //   });
+  // };
+
   const handleNavigation = (direction) => {
     setSelectedProjectIndex((prevIndex) => {
-      if (direction === "previous") {
-        return prevIndex === 0 ? projectCount - 1 : prevIndex - 1;
-      } else {
-        return prevIndex === projectCount - 1 ? 0 : prevIndex + 1;
-      }
+      const newIndex = direction === "previous" ? prevIndex - 1 : prevIndex + 1;
+      return (newIndex + projectCount) % projectCount;
     });
   };
+  
 
   useGSAP(() => {
     gsap.fromTo(
@@ -34,7 +42,7 @@ const Projects = () => {
   const currentProject = myProjects[selectedProjectIndex];
 
   return (
-    <section className="c-space my-20">
+    <section className="c-space my-20" id="projects">
       <p className="head-text">My Selected Work</p>
 
       <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">

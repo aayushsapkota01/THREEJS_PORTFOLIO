@@ -2,10 +2,8 @@ import { useGLTF, useTexture } from "@react-three/drei";
 import { useMemo } from "react";
 
 const HackerRoom = (props) => {
-  // Load GLTF model
+  // Load GLTF model and textures
   const { nodes, materials } = useGLTF("/models/hacker-room.glb");
-
-  // Load textures
   const monitorTexture = useTexture("textures/desk/monitor.png");
   const screenTexture = useTexture("textures/desk/screen.png");
 
@@ -18,13 +16,18 @@ const HackerRoom = (props) => {
     [monitorTexture, screenTexture]
   );
 
+  // Ensure textures are loaded before rendering
+  if (!textures.monitor || !textures.screen) {
+    return null; // or a loading indicator
+  }
+
   return (
     <group {...props} dispose={null}>
       <mesh
         geometry={nodes.screen_screens_0.geometry}
         material={materials.screens}
       >
-        {textures.screen && <meshMatcapMaterial map={textures.screen} />}
+        <meshMatcapMaterial map={textures.screen} />
       </mesh>
       <mesh
         geometry={nodes.screen_glass_glass_0.geometry}
@@ -38,7 +41,7 @@ const HackerRoom = (props) => {
         geometry={nodes.table_table_mat_0_2.geometry}
         material={materials.computer_mat}
       >
-        {textures.monitor && <meshMatcapMaterial map={textures.monitor} />}
+        <meshMatcapMaterial map={textures.monitor} />
       </mesh>
       <mesh
         geometry={nodes.table_table_mat_0_3.geometry}
